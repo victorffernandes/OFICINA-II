@@ -8,10 +8,6 @@ public class Player : Default {
 	public int nextChoice = 0;
     public bool isWalking = true;
     public float speed;
-    public override void OnTouch(Touch t)
-    {
-
-    }
 
 	public void madeChoice(GameObject g)
 	{
@@ -30,6 +26,7 @@ public class Player : Default {
 			col.gameObject.GetComponent<CircleCollider2D>().enabled = false;
 			lastCheckPoint = current;
 			current = col.gameObject.GetComponent<WayPoint>().options[nextChoice];
+            nextChoice = 0;
         }
 
         if (col.gameObject.tag.Equals("Bueiro") )
@@ -50,6 +47,7 @@ public class Player : Default {
         base.Update();
         if (isWalking)
         {
+            LookAt2D(current.transform.position);
             transform.position = Vector3.MoveTowards(transform.position, current.transform.position, speed);
         }
 

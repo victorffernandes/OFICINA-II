@@ -10,7 +10,7 @@ public abstract class Default : MonoBehaviour {
         transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
     }
 
-    public virtual void OnTouch(Touch t ) { }
+    public virtual void OnTouch(Touch t ,Vector3 mouseP=new Vector3()) { }
 
 
     
@@ -26,8 +26,9 @@ public abstract class Default : MonoBehaviour {
 		} 
 		else 
 		{
-			try
-			{}
+                Vector2 point = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
+                if (this.gameObject.collider2D.OverlapPoint(Camera.main.ScreenToWorldPoint(point)))
+                    OnTouch(new Touch(),Input.mousePosition);
 		}
 	}
 }

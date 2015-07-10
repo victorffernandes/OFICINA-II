@@ -11,7 +11,7 @@ public class DraggableObj : Default {
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        //Debug.Log("ooooooooooi");
+        Debug.Log(match);
         if (col.gameObject.tag.Equals(match) )
         {
 			collider2D.enabled = false;
@@ -22,11 +22,11 @@ public class DraggableObj : Default {
         
     }
 
-    public override void OnTouch(Touch t)
+    public override void OnTouch(Touch t,Vector3 p)
     {
         if (canDrag)
         {
-            Vector3 r = Camera.main.ScreenToWorldPoint(t.position);
+            Vector3 r = Camera.main.ScreenToWorldPoint(p);
             r = new Vector3(r.x, r.y, 0);
             transform.position = r;
         }
