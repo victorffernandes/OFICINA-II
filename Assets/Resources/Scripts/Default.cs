@@ -12,10 +12,6 @@ public abstract class Default : MonoBehaviour {
 
     public virtual void OnTouch(Touch t ,Vector3 mouseP=new Vector3()) { }
 
-
-    
-
-
 	public virtual void Update () {
         if (Input.touchSupported && Input.touchCount > 0) {
 			for (int i = 0; i < Input.touchCount; i++) {

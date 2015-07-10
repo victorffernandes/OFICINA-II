@@ -7,17 +7,30 @@ public class Player : Default {
 	public GameObject current ;
 	public int nextChoice = 0;
     public bool isWalking = true;
+    
     public float speed;
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        if(col.gameObject.tag.Equals("WayPoint") && !col.gameObject.Equals(lastCheckPoint))
+        if(col.gameObject.name == "School")
         {
-			lastCheckPoint = current;
-			current = col.gameObject.GetComponent<WayPoint>().options[nextChoice];
-            nextChoice = 0;
-            Debug.Log(lastCheckPoint.name);
-            PlayerPrefs.SetString("checkPoint", lastCheckPoint.name);
+            Gerenc.points -= (int)(Time.fixedTime * 2);
+            if(Gerenc.points > 0)
+            {
+                Application.LoadLevel("Ganhou");
+            }
+            else
+            {
+                Application.LoadLevel("GameOver");
+            }
+        }
+        else if(col.gameObject.tag.Equals("WayPoint") && !col.gameObject.Equals(lastCheckPoint))
+        {
+                lastCheckPoint = current;
+                current = col.gameObject.GetComponent<WayPoint>().options[nextChoice];
+                nextChoice = 0;
+                Debug.Log(lastCheckPoint.name);
+                PlayerPrefs.SetString("checkPoint", lastCheckPoint.name);
         }
 
         if (col.gameObject.layer.Equals(8))
@@ -32,6 +45,11 @@ public class Player : Default {
 		{
 			isWalking = false;
 		}
+        if (col.gameObject.layer.Equals(11))
+        {
+            Application.LoadLevel("GameOver");
+            Gerenc.points -= (int)(Time.fixedTime * 2) + 10;
+        }
 
     }
 

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class Gerenc : Default {
@@ -6,6 +7,8 @@ public class Gerenc : Default {
     public static Player pScript;
     public bool bus;
     public static bool goodAction = false;
+    public static int points = 200;
+    public Text t;
 
 	// Use this for initialization
 	void Start () 
@@ -16,6 +19,7 @@ public class Gerenc : Default {
 
     public static void returnToCheckPoint()
     {
+        points -= 10;
         string lastWayPointName = PlayerPrefs.GetString("checkPoint");
         Debug.Log(lastWayPointName);
         GameObject.FindGameObjectWithTag("Player").transform.position = GameObject.Find(lastWayPointName).transform.position;
@@ -43,6 +47,7 @@ public class Gerenc : Default {
 	// Update is called once per frame
     public override void Update()
     {
+        t.text = points.ToString();
         if( !bus && Fade.alpha == 1 )
             //player.GetComponent<SpriteRenderer>().sprite = Resource
 
