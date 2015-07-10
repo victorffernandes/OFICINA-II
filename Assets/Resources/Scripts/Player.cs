@@ -1,40 +1,57 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Player : Default {
-    public Transform[] t;
-    public int current = 0;
+	public GameObject lastCheckPoint;
+	public GameObject current ;
+	public int nextChoice = 0;
     public bool isWalking = true;
+    public float speed;
     public override void OnTouch(Touch t)
     {
-        Debug.Log("tocou");
+
     }
+
+	public void madeChoice(GameObject g)
+	{
+		/*Transform[] childT;
+		for(int i = 0; i < g.transform.childCount)
+		{
+			childT = g.GetComponentsInChildren<Transform>();
+		}*/
+	}
+
 
     void OnCollisionStay2D(Collision2D col)
     {
-        if(col.gameObject.tag.Equals("WayPoint") && !col.gameObject.GetComponent<WayPoint>().isPuzzle)
+        if(col.gameObject.tag.Equals("WayPoint"))
         {
-            isWalking = true;
-            Destroy(col.gameObject);
-            if (t.Length - 1 != current ) current++;
+			col.gameObject.GetComponent<CircleCollider2D>().enabled = false;
+			lastCheckPoint = current;
+			current = col.gameObject.GetComponent<WayPoint>().options[nextChoice];
         }
-        if (col.gameObject.tag.Equals("WayPoint") && col.gameObject.GetComponent<WayPoint>().isPuzzle)
+
+        if (col.gameObject.tag.Equals("Bueiro") )
         {
-            isWalking = false;
+            Destroy(gameObject);
         }
+
     }
 
 	// Use this for initialization
 	void Start () {
-	
+        speed *= 1f / 100f;
 	}
 	
 	// Update is called once per frame
-	public override void Update () {
+	public override void Update () 
+    {
         base.Update();
         if (isWalking)
         {
-            transform.position = Vector3.MoveTowards(transform.position, t[current].position, 0.1f);
+            transform.position = Vector3.MoveTowards(transform.position, current.transform.position, speed);
         }
+
 	}
 }

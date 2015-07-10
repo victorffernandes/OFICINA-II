@@ -5,7 +5,7 @@
 	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
 	<ProductVersion>10.0.20506</ProductVersion>
 	<SchemaVersion>2.0</SchemaVersion>
-	<ProjectGuid>{E2F01199-9A20-DA7A-9BB0-4A5F4DF0724C}</ProjectGuid>
+	<ProjectGuid>{8BDF9CC5-13C1-14E6-BFB4-59E358D66FA7}</ProjectGuid>
 	<OutputType>Library</OutputType>
 	<AppDesignerFolder>Properties</AppDesignerFolder>
 	<RootNamespace></RootNamespace>
@@ -51,6 +51,7 @@
      <Compile Include="Assets\Resources\Scripts\DraggableObj.cs" />
      <Compile Include="Assets\Resources\Scripts\Gerenc.cs" />
      <Compile Include="Assets\Resources\Scripts\Player.cs" />
+     <Compile Include="Assets\Resources\Scripts\Tap.cs" />
      <Compile Include="Assets\Resources\Scripts\WayPoint.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.2/UnityEngine.UI.dll</HintPath>

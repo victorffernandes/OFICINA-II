@@ -14,8 +14,8 @@ public class DraggableObj : Default {
         //Debug.Log("ooooooooooi");
         if (col.gameObject.tag.Equals(match) )
         {
+			collider2D.enabled = false;
             transform.position = col.gameObject.transform.position;
-            Debug.Log("ooooooooooi");
             Destroy(col.gameObject);
             canDrag = false;
         }

@@ -7,11 +7,16 @@ public class Gerenc : Default {
 	void Start () {
 	
 	}
-	
-    public void Puzzle1()
-    {
-    }
 
+	void CorrectChoice()
+	{
+		GameObject.FindGameObjectWithTag ("Player").GetComponent<Player> ().nextChoice = 1;
+	}
+
+	void WrongChoice()
+	{
+		GameObject.FindGameObjectWithTag ("Player").GetComponent<Player> ().nextChoice = 0;
+	}
 
 	// Update is called once per frame
 	void Update () {
