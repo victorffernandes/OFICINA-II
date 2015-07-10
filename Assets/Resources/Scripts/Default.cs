@@ -2,11 +2,11 @@
 using System.Collections;
 
 public abstract class Default : MonoBehaviour {
-
+    public float zVelocity = 0.1f;
     public void LookAt2D(Vector3 target)
     {
         Vector3 dir = target - transform.position;
-        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        float angle = Mathf.SmoothDampAngle(transform.eulerAngles.z, (Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg),ref zVelocity,2f);
         transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
     }
 

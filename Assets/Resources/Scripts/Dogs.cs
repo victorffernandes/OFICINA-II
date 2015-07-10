@@ -10,7 +10,6 @@ public class Dogs : MonoBehaviour {
         if (!Gerenc.goodAction)
         {
             canMove = true;
-            //GetComponentInChildren<BoxCollider2D>().gameObject.SetActive(false);
         }
         else
         {

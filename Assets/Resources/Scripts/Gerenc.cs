@@ -2,17 +2,25 @@
 using System.Collections;
 
 public class Gerenc : Default {
-    public GameObject player;
-    Player pScript;
+    public static GameObject player;
+    public static Player pScript;
     public bool bus;
     public static bool goodAction = false;
 
 	// Use this for initialization
 	void Start () 
     {
+        player = GameObject.FindGameObjectWithTag("Player");
         pScript = player.GetComponent<Player>();
-        
     }
+
+    public static void returnToCheckPoint()
+    {
+        string lastWayPointName = PlayerPrefs.GetString("checkPoint");
+        Debug.Log(lastWayPointName);
+        GameObject.FindGameObjectWithTag("Player").transform.position = GameObject.Find(lastWayPointName).transform.position;
+    }
+
 
     IEnumerator StartBusWalking()
     {

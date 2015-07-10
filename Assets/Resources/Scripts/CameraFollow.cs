@@ -1,19 +1,29 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class CameraFollow : MonoBehaviour {
-    public Transform player;
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
+public class CameraFollow : Default
+{
 
-        if (player.Equals(null)) player = GameObject.FindGameObjectWithTag("Player").transform;
+    public float dampTime = 0.15f;
+    private Vector3 velocity = Vector3.zero;
+    public Transform target;
 
-        transform.position = new Vector3(player.position.x + 5, player.position.y + 0.2f, -10);
+    // Update is called once per frame
+    void Update()
+    {
+        
+        if(target)
+        {
+            //transform.position = new Vector3(target.transform.position.x + 3f,target.transform.position.y,-10);
+            LookAt2D(Gerenc.player.GetComponent<Player>().current.transform.position);
+        }
+        if (target)
+        {
+            Vector3 point = camera.WorldToViewportPoint(target.position);
+            Vector3 delta = target.position - camera.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, point.z)); //(new Vector3(0.5, 0.5, point.z));
+            Vector3 destination = transform.position + delta;
+            transform.position = Vector3.SmoothDamp(transform.position, destination, ref velocity, dampTime);
+        }
 
-	}
+    }
 }

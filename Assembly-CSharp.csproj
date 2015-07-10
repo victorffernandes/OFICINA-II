@@ -5,7 +5,7 @@
 	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
 	<ProductVersion>10.0.20506</ProductVersion>
 	<SchemaVersion>2.0</SchemaVersion>
-	<ProjectGuid>{F6AB7217-0D70-7B89-D89C-10F018D35794}</ProjectGuid>
+	<ProjectGuid>{53E1BCCD-C54D-0624-F1C8-33DBDE721C1C}</ProjectGuid>
 	<OutputType>Library</OutputType>
 	<AppDesignerFolder>Properties</AppDesignerFolder>
 	<RootNamespace></RootNamespace>
@@ -52,11 +52,13 @@
      <Compile Include="Assets\Resources\Scripts\Default.cs" />
      <Compile Include="Assets\Resources\Scripts\Dogs.cs" />
      <Compile Include="Assets\Resources\Scripts\DraggableObj.cs" />
+     <Compile Include="Assets\Resources\Scripts\Drugdealer.cs" />
      <Compile Include="Assets\Resources\Scripts\Fade.cs" />
      <Compile Include="Assets\Resources\Scripts\Gerenc.cs" />
      <Compile Include="Assets\Resources\Scripts\Player.cs" />
      <Compile Include="Assets\Resources\Scripts\Tap.cs" />
      <Compile Include="Assets\Resources\Scripts\TransitSign.cs" />
+     <Compile Include="Assets\Resources\Scripts\Velhinhos.cs" />
      <Compile Include="Assets\Resources\Scripts\WayPoint.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.1/UnityEngine.UI.dll</HintPath>

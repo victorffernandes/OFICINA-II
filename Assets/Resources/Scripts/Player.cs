@@ -11,23 +11,39 @@ public class Player : Default {
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        if(col.gameObject.tag.Equals("WayPoint"))
+        if(col.gameObject.tag.Equals("WayPoint") && !col.gameObject.Equals(lastCheckPoint))
         {
 			lastCheckPoint = current;
 			current = col.gameObject.GetComponent<WayPoint>().options[nextChoice];
             nextChoice = 0;
+            Debug.Log(lastCheckPoint.name);
+            PlayerPrefs.SetString("checkPoint", lastCheckPoint.name);
         }
 
         if (col.gameObject.layer.Equals(8))
         {
-            Destroy(gameObject);
+            Gerenc.returnToCheckPoint();
         }
         if (col.gameObject.layer.Equals(9))
         {
             col.gameObject.transform.parent.gameObject.SendMessage("ActiveTrigger");
         }
+		if (col.gameObject.layer.Equals (10))
+		{
+			isWalking = false;
+		}
 
     }
+
+	void OnTriggerExit2D(Collider2D col)
+	{
+		if (col.gameObject.layer.Equals (10))
+		{
+			isWalking = true;
+		}
+		
+	}
+
 
 	// Use this for initialization
 	void Start () {
