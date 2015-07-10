@@ -9,29 +9,22 @@ public class Player : Default {
     public bool isWalking = true;
     public float speed;
 
-	public void madeChoice(GameObject g)
-	{
-		/*Transform[] childT;
-		for(int i = 0; i < g.transform.childCount)
-		{
-			childT = g.GetComponentsInChildren<Transform>();
-		}*/
-	}
-
-
-    void OnCollisionStay2D(Collision2D col)
+    void OnTriggerEnter2D(Collider2D col)
     {
         if(col.gameObject.tag.Equals("WayPoint"))
         {
-			col.gameObject.GetComponent<CircleCollider2D>().enabled = false;
 			lastCheckPoint = current;
 			current = col.gameObject.GetComponent<WayPoint>().options[nextChoice];
             nextChoice = 0;
         }
 
-        if (col.gameObject.tag.Equals("Bueiro") )
+        if (col.gameObject.layer.Equals(8))
         {
             Destroy(gameObject);
+        }
+        if (col.gameObject.layer.Equals(9))
+        {
+            col.gameObject.transform.parent.gameObject.SendMessage("ActiveTrigger");
         }
 
     }

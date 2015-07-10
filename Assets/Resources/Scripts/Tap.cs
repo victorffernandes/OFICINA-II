@@ -3,10 +3,14 @@ using System.Collections;
 
 public class Tap : Default {
 	public string action;
+    public int clickTimes = 0;
 	public override void OnTouch(Touch t, Vector3 p)
 	{
         if (Input.GetMouseButtonDown(0))
-        GameObject.FindGameObjectWithTag("Gerenc").SendMessage(action);
+        {
+            if(!string.IsNullOrEmpty(action))GameObject.FindGameObjectWithTag("Gerenc").SendMessage(action);
+            clickTimes++;
+        }
 
 		/*if (t.phase == TouchPhase.Began) 
 		{
