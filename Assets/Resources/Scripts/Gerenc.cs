@@ -1,12 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
-using UnityEngine;
 
 public class Gerenc : Default {
     GameObject player;
     public static bool outOfBus = false;
     GameObject savedMap;
     public static bool goodAction = false;
+
     IEnumerator StartBusTimer()
     {
         yield return new WaitForSeconds(6f);
@@ -21,8 +21,13 @@ public class Gerenc : Default {
 	void Start () {
         if(Application.loadedLevelName.Equals("inBus"))
         {
+            Debug.Log("START");
             savedMap = GameObject.FindGameObjectWithTag("DontDestroy");
-            savedMap.SetActive(false);
+            if (savedMap)
+            {
+                Debug.Log("TESTE");
+                savedMap.SetActive(false);
+            }
             StartCoroutine(StartTimerForBus());
         }
         if (Application.loadedLevelName.Equals("inGame"))
@@ -37,15 +42,13 @@ public class Gerenc : Default {
             {
                 Destroy(GameObject.FindGameObjectsWithTag("DontDestroy")[1]);
                 GameObject wayP = GameObject.Find("WayPoint1");
-          GameObject.FindGameObjectWithTag("Player").transform.position = new Vector2(wayP.transform.position.x - 0.9f,wayP.transform.position.y);
-          GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().current = GameObject.Find("WayPoint1");
+                player = GameObject.FindGameObjectWithTag("Player");
+                player.transform.position = new Vector2(wayP.transform.position.x - 0.9f,wayP.transform.position.y);
+                player.GetComponent<Player>().current = GameObject.Find("WayPoint1");
             }
         }
-
-
         player = GameObject.FindGameObjectWithTag("Player");
-        
-	}
+    }
 
     IEnumerator StartTimerForBus()
     {
@@ -72,7 +75,7 @@ public class Gerenc : Default {
 
 	void CorrectChoice()
 	{
-        
+        player.GetComponent<Player>().nextChoice = 1;
 	}
 
 	void WrongChoice()
@@ -81,7 +84,8 @@ public class Gerenc : Default {
 	}
 
 	// Update is called once per frame
-	void Update () {
+    public override void Update()
+    {
         Screen.orientation = ScreenOrientation.LandscapeLeft;                                                                 
 	}
 }

@@ -24,10 +24,9 @@ public class BabyCar : Default {
         
 	}
 	
-
-
 	// Update is called once per frame
-	void Update () {
+    public override void Update()
+    {
        if(canMove && !babySaved) transform.Translate(-1 * Time.deltaTime * speed, 0, 0);
        int tt = GetComponent<Tap>().clickTimes;
        if (tt == 3) babySaved = true;

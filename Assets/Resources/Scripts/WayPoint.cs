@@ -5,7 +5,6 @@ using System.Collections.Generic;
 public class WayPoint : MonoBehaviour {
 	public List<GameObject> options;
 
-
 	// Use this for initialization
 	void Start () {
 	

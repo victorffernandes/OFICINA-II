@@ -4,6 +4,7 @@ using System.Collections;
 public class Tap : Default {
 	public string action;
     public int clickTimes = 0;
+
 	public override void OnTouch(Touch t, Vector3 p)
 	{
         if (Input.GetMouseButtonDown(0))
@@ -18,14 +19,14 @@ public class Tap : Default {
 		}*/
 	}
 
-
 	// Use this for initialization
 	void Start () {
 	
 	}
 	
 	// Update is called once per frame
-	void Update () {
+    public override void Update()
+    {
 		base.Update ();
 	}
 }

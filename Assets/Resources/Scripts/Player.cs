@@ -43,6 +43,5 @@ public class Player : Default {
             LookAt2D(current.transform.position);
             transform.position = Vector3.MoveTowards(transform.position, current.transform.position, speed);
         }
-
 	}
 }

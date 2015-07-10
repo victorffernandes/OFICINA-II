@@ -14,9 +14,9 @@ public class TransitSign : Default {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	public override void Update () {
 
         int tt = GetComponent<Tap>().clickTimes;
-        if (tt.Equals(6)) GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().isWalking = true;
+        if (tt > 6) GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().isWalking = true;
 	}
 }
