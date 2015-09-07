@@ -2,7 +2,8 @@
 using System.Collections;
 
 public abstract class Default : MonoBehaviour {
-    public float zVelocity = 0.1f;
+    float zVelocity = 9f;
+    
     public void LookAt2D(Vector3 target)
     {
         Vector3 dir = target - transform.position;
@@ -10,7 +11,8 @@ public abstract class Default : MonoBehaviour {
         transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
     }
 
-    public virtual void OnTouch(Touch t ,Vector3 mouseP=new Vector3()) { }
+    public virtual void OnTouch(object o) { }
+
 
 	public virtual void Update () {
         if (Input.touchSupported && Input.touchCount > 0) {
@@ -24,7 +26,7 @@ public abstract class Default : MonoBehaviour {
 		{
                 Vector2 point = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
                 if (this.gameObject.collider2D.OverlapPoint(Camera.main.ScreenToWorldPoint(point)))
-                    OnTouch(new Touch(),Input.mousePosition);
+                    OnTouch(Input.mousePosition);
 		}
 	}
 }
