@@ -10,8 +10,23 @@ public class DPuzzle : Default {
     void startPuzzle()
     {
         canCall = true;
+        foreach(AudioSource a in GetComponentsInChildren<AudioSource>())
+        {
+            a.Play();
+        }
     }
-    void outPuzzle() { }
+    void outPuzzle() 
+    {
+        if (!isSolved)
+        {
+            foreach (DragDrop d in Drag)
+            {
+                d.canMatch = false;
+                d.canFollow = false;
+                d.GetComponent<Transform>().position = d.startPosition;
+            }
+        }
+    }
 	// Update is called once per frame
 	void Update () 
     {

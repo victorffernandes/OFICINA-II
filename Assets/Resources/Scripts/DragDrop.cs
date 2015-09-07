@@ -2,15 +2,15 @@
 using System.Collections;
 
 public class DragDrop : Default {
-    Vector3 startPosition;
+    public Vector3 startPosition;
 	private GameObject instPoint;
     public GameObject match;
     public bool wasTouched = false;
     public bool matchAttached = false;
     public bool canMatch;
-    public bool canFollow = false;
+    public bool canFollow;
     public Vector3 matchedPosition;
-    Vector3 pointerPos;
+    //Vector3 pointerPos;
 
     void OnTriggerEnter2D(Collider2D col)
     {
@@ -29,7 +29,7 @@ public class DragDrop : Default {
         {
             if ( !matchAttached)
             {
-                pointerPos = ((Touch)t).position; 
+                //pointerPos = ((Touch)t).position; 
                 wasTouched = true;
             }
         }
@@ -37,13 +37,14 @@ public class DragDrop : Default {
         {
             if (Input.GetButton("Fire1") &&  !matchAttached)
             {
-                pointerPos = ((Vector3)t);
+                //pointerPos = ((Vector3)t);
                 wasTouched = true;
             }
         }
     }
 	void Start () {
        startPosition =  transform.position;
+       canFollow = true;
 		GameObject g = Resources.Load ("Prefabs/InterestPoint") as GameObject;
 		instPoint = (GameObject)Instantiate(g,g.transform.TransformPoint(gameObject.transform.position) , Quaternion.identity);
        //GameObject g = (GameObject)Instantiate(Resources.Load("Prefabs/InterestPoint"), Vector3.zero, Quaternion.identity);
@@ -51,16 +52,17 @@ public class DragDrop : Default {
        //g.transform.localPosition = new Vector3(0, 0, 0);
 	}
 	void Update () {
+        
 		if (!matchAttached) {
 			instPoint.GetComponent<SpriteRenderer> ().enabled = true;
 		}
-        if (Input.touchSupported && Input.GetTouch(0).position != null)
+        if (Input.touchSupported && Input.GetTouch(0).position != null && canFollow)
         {
             Vector3 worldPoint = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
             transform.position = new Vector3(worldPoint.x, worldPoint.y, 0);
 			instPoint.GetComponent<SpriteRenderer>().enabled = false;
         }
-        else if (wasTouched && Input.GetButton("Fire1") && !matchAttached)
+        else if (wasTouched && Input.GetButton("Fire1") && !matchAttached && canFollow)
         {
             Vector3 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             transform.position = new Vector3(worldPoint.x, worldPoint.y, 0);

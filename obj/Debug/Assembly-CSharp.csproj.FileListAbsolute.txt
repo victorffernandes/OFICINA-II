@@ -1,1 +1,13 @@
 C:\Users\Victor Fernandes\Desktop\Work\Projetos\OFICINA II\V2.6\obj\Debug\Assembly-CSharp.csprojResolveAssemblyReference.cache
+C:\Users\Victor Fernandes\Desktop\Work\Projetos\OFICINA-II\Temp\bin\Debug\Assembly-CSharp.dll
+C:\Users\Victor Fernandes\Desktop\Work\Projetos\OFICINA-II\Temp\bin\Debug\Assembly-CSharp.pdb
+C:\Users\Victor Fernandes\Desktop\Work\Projetos\OFICINA-II\Temp\bin\Debug\UnityEditor.dll
+C:\Users\Victor Fernandes\Desktop\Work\Projetos\OFICINA-II\Temp\bin\Debug\UnityEngine.dll
+C:\Users\Victor Fernandes\Desktop\Work\Projetos\OFICINA-II\Temp\bin\Debug\UnityEngine.UI.dll
+C:\Users\Victor Fernandes\Desktop\Work\Projetos\OFICINA-II\Temp\bin\Debug\Mono.Cecil.dll
+C:\Users\Victor Fernandes\Desktop\Work\Projetos\OFICINA-II\Temp\bin\Debug\nunit.framework.dll
+C:\Users\Victor Fernandes\Desktop\Work\Projetos\OFICINA-II\Temp\bin\Debug\Unity.DataContract.dll
+C:\Users\Victor Fernandes\Desktop\Work\Projetos\OFICINA-II\Temp\bin\Debug\ICSharpCode.NRefactory.dll
+C:\Users\Victor Fernandes\Desktop\Work\Projetos\OFICINA-II\obj\Debug\Assembly-CSharp.csprojResolveAssemblyReference.cache
+C:\Users\Victor Fernandes\Desktop\Work\Projetos\OFICINA-II\obj\Debug\Assembly-CSharp.dll
+C:\Users\Victor Fernandes\Desktop\Work\Projetos\OFICINA-II\obj\Debug\Assembly-CSharp.pdb

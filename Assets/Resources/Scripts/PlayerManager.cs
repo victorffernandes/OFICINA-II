@@ -25,7 +25,9 @@ public class PlayerManager : MonoBehaviour {
             isPlaying = false;
             FindObjectOfType<HUDController>().changeScene("Menu");
         }
-
+        if (col.gameObject.tag.Equals("OutPuzzle")) {
+            col.gameObject.transform.parent.gameObject.SendMessage("outPuzzle");
+        }
         if (col.gameObject.layer.Equals(8) && col.gameObject.tag.Equals("EnterPuzzle") && !col.transform.parent.GetComponent<DPuzzle>().isSolved)
         {
             isWalking = false;
