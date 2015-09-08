@@ -21,9 +21,12 @@ public class DPuzzle : Default {
         {
             foreach (DragDrop d in Drag)
             {
-                d.canMatch = false;
-                d.canFollow = false;
-                d.GetComponent<Transform>().position = d.startPosition;
+                if (!d.matchAttached)
+                {
+                    d.canMatch = false;
+                    d.canFollow = false;
+                    d.GetComponent<Transform>().position = d.startPosition;
+                }
             }
         }
     }
@@ -47,6 +50,7 @@ public class DPuzzle : Default {
                         Destroy(transform.GetComponentInChildren<Animator>().gameObject);
                         FindObjectOfType<PlayerManager>().isWalking = true;
                         FindObjectOfType<PlayerManager>().GetComponent<Animator>().SetBool("isWalking", true);
+                        FindObjectOfType<PlayerManager>().GetComponent<AudioSource>().Play();
                     }
                 break;
 
@@ -60,6 +64,7 @@ public class DPuzzle : Default {
                     {
                         isSolved = true;
 						Drag[0].match.gameObject.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Sprites/puzzle2");
+                        FindObjectOfType<PlayerManager>().GetComponent<AudioSource>().Play();
                     }
                break;
 
@@ -72,6 +77,7 @@ public class DPuzzle : Default {
 				if (e.Equals(Drag.Length))
 				{
 					isSolved = true;
+                    FindObjectOfType<PlayerManager>().GetComponent<AudioSource>().Play();
 				}
 				break;
 
@@ -84,6 +90,7 @@ public class DPuzzle : Default {
 				if (e.Equals(Drag.Length))
 				{
 					isSolved = true;
+                    FindObjectOfType<PlayerManager>().GetComponent<AudioSource>().Play();
 				}
 				break;
 			case "fase1_5":
@@ -95,6 +102,8 @@ public class DPuzzle : Default {
 				if (e.Equals(Drag.Length))
 				{
 					isSolved = true;
+                    GetComponentInChildren<AudioSource>().Stop();
+                    FindObjectOfType<PlayerManager>().GetComponent<AudioSource>().Play();
 				}
 				break;
 			case "fase1_6":
@@ -106,6 +115,7 @@ public class DPuzzle : Default {
 				if (e.Equals(Drag.Length))
 				{
 					isSolved = true;
+                    FindObjectOfType<PlayerManager>().GetComponent<AudioSource>().Play();
 				}
 				break;
 

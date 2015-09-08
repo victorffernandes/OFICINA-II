@@ -56,7 +56,7 @@ public class DragDrop : Default {
 		if (!matchAttached) {
 			instPoint.GetComponent<SpriteRenderer> ().enabled = true;
 		}
-        if (Input.touchSupported && Input.GetTouch(0).position != null && canFollow)
+        if (Input.touchSupported && Input.touchCount != 0 && wasTouched && canFollow && !matchAttached)
         {
             Vector3 worldPoint = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
             transform.position = new Vector3(worldPoint.x, worldPoint.y, 0);

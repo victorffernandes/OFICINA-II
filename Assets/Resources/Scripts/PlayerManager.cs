@@ -7,10 +7,10 @@ public class PlayerManager : MonoBehaviour {
     public float speed;
     public bool isPlaying = true;
 
-	// Use this for initialization
-	void Start () {
-	
-	}
+    public void playFootStep()
+    {
+        Camera.main.GetComponent<AudioSource>().Play();
+    }
 
     void OnTriggerEnter2D(Collider2D col)
     {
