@@ -23,7 +23,7 @@ public class PlayerManager : MonoBehaviour {
         {
             isWalking = false;
             isPlaying = false;
-            FindObjectOfType<HUDController>().changeScene("Menu");
+            FindObjectOfType<HUDController>().changeScene("Ganhou");
         }
         if (col.gameObject.tag.Equals("OutPuzzle")) {
             col.gameObject.transform.parent.gameObject.SendMessage("outPuzzle");
