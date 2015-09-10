@@ -51,7 +51,7 @@ public class DragDrop : Default {
        //g.transform.parent = gameObject.transform;
        //g.transform.localPosition = new Vector3(0, 0, 0);
 	}
-	void Update () {
+	new void Update () {
         
 		if (!matchAttached) {
 			instPoint.GetComponent<SpriteRenderer> ().enabled = true;

@@ -30,8 +30,17 @@ public class DPuzzle : Default {
             }
         }
     }
+
+	public GameObject getChildWithTag(string str)
+	{
+		for (int i = 0; i < transform.childCount; i++) {
+			if(transform.GetChild(i).tag == str)return transform.GetChild(i).gameObject;
+		}
+		return gameObject;
+	}
+
 	// Update is called once per frame
-	void Update () 
+	new void Update () 
     {
 	    if(!isSolved && canCall)
         {
@@ -51,6 +60,7 @@ public class DPuzzle : Default {
                         FindObjectOfType<PlayerManager>().isWalking = true;
                         FindObjectOfType<PlayerManager>().GetComponent<Animator>().SetBool("isWalking", true);
                         FindObjectOfType<PlayerManager>().GetComponent<AudioSource>().Play();
+						getChildWithTag("Win").GetComponent<Animator>().Play("win");
                     }
                 break;
 
@@ -65,6 +75,7 @@ public class DPuzzle : Default {
                         isSolved = true;
 						Drag[0].match.gameObject.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Sprites/puzzle2");
                         FindObjectOfType<PlayerManager>().GetComponent<AudioSource>().Play();
+						getChildWithTag("Win").GetComponent<Animator>().Play("win");
                     }
                break;
 
@@ -78,6 +89,7 @@ public class DPuzzle : Default {
 				{
 					isSolved = true;
                     FindObjectOfType<PlayerManager>().GetComponent<AudioSource>().Play();
+					getChildWithTag("Win").GetComponent<Animator>().Play("win");
 				}
 				break;
 
@@ -91,6 +103,7 @@ public class DPuzzle : Default {
 				{
 					isSolved = true;
                     FindObjectOfType<PlayerManager>().GetComponent<AudioSource>().Play();
+					getChildWithTag("Win").GetComponent<Animator>().Play("win");
 				}
 				break;
 			case "fase1_5":
@@ -104,6 +117,7 @@ public class DPuzzle : Default {
 					isSolved = true;
                     GetComponentInChildren<AudioSource>().Stop();
                     FindObjectOfType<PlayerManager>().GetComponent<AudioSource>().Play();
+					getChildWithTag("Win").GetComponent<Animator>().Play("win");
 				}
 				break;
 			case "fase1_6":
@@ -116,6 +130,7 @@ public class DPuzzle : Default {
 				{
 					isSolved = true;
                     FindObjectOfType<PlayerManager>().GetComponent<AudioSource>().Play();
+					getChildWithTag("Win").GetComponent<Animator>().Play("win");
 				}
 				break;
 
