@@ -133,8 +133,36 @@ public class DPuzzle : Default {
 					getChildWithTag("Win").GetComponent<Animator>().Play("win");
 				}
 				break;
+			
+			case "fase2_1":
+				e = 0;
+				for (int i = 0; i < Drag.Length;i++ )
+				{
+					if (Drag[i].matchAttached) e++;
+				}
+				if (e.Equals(Drag.Length))
+				{
+					isSolved = true;
+					getChildWithTag("Win").GetComponent<Animator>().Play("win");
+					gameObject.transform.FindChild("WalkingGirl").gameObject.GetComponent<Animator>().SetBool("isWalking",true);
+				}
+				break;
 
-//            case "joao_2"://drag All
+			case "fase2_2":
+				e = 0;
+				for (int i = 0; i < Drag.Length;i++ )
+				{
+					if (Drag[i].matchAttached) e++;
+				}
+				if (e.Equals(Drag.Length))
+				{
+					isSolved = true;
+					getChildWithTag("Win").GetComponent<Animator>().Play("win");
+					Drag[0].match.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Sprites/mendigo_02");
+					Destroy(Drag[0].gameObject);
+				}
+				break;
+				//            case "joao_2"://drag All
 //                Animator g = transform.FindChild("EnterPuzzle").GetComponent<Animator>();
 //                       g.SetInteger("tutorialType", 2);
 //                    int n = 0;
