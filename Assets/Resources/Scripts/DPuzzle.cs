@@ -143,12 +143,48 @@ public class DPuzzle : Default {
 				if (e.Equals(Drag.Length))
 				{
 					isSolved = true;
+					FindObjectOfType<PlayerManager>().GetComponent<AudioSource>().Play();
 					getChildWithTag("Win").GetComponent<Animator>().Play("win");
 					gameObject.transform.FindChild("WalkingGirl").gameObject.GetComponent<Animator>().SetBool("isWalking",true);
 				}
 				break;
 
 			case "fase2_2":
+				e = 0;
+				GetComponentInChildren<EgretController>().canFly = true;
+				for (int i = 0; i < Drag.Length;i++ )
+				{
+					if (Drag[i].matchAttached) e++;
+				}
+				if (e.Equals(Drag.Length))
+				{
+					isSolved = true;
+					getChildWithTag("Win").GetComponent<Animator>().Play("win");
+					FindObjectOfType<PlayerManager>().GetComponent<AudioSource>().Play();
+
+					Drag[0].match.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Sprites/mendigo_02");
+					Destroy(Drag[0].gameObject);
+				}
+				break;
+
+			case "fase2_3":
+				e = 0;
+
+				for (int i = 0; i < Drag.Length;i++ )
+				{
+					if (Drag[i].matchAttached) e++;
+				}
+				if (e.Equals(Drag.Length))
+				{
+					isSolved = true;
+					getChildWithTag("Win").GetComponent<Animator>().Play("win");
+					FindObjectOfType<PlayerManager>().GetComponent<AudioSource>().Play();
+					Drag[0].match.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Sprites/muroPintado");
+					Destroy(Drag[0].gameObject);
+				}
+				break;
+
+			case "fase2_4":
 				e = 0;
 				for (int i = 0; i < Drag.Length;i++ )
 				{
@@ -158,10 +194,28 @@ public class DPuzzle : Default {
 				{
 					isSolved = true;
 					getChildWithTag("Win").GetComponent<Animator>().Play("win");
-					Drag[0].match.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Sprites/mendigo_02");
+					FindObjectOfType<PlayerManager>().GetComponent<AudioSource>().Play();
+					transform.GetComponentInChildren<AudioSource>().enabled = true;
+					transform.GetComponentInChildren<AudioSource>().Play();
 					Destroy(Drag[0].gameObject);
 				}
 				break;
+
+			case "fase2_5":
+				e = 0;
+				for (int i = 0; i < Drag.Length;i++ )
+				{
+					if (Drag[i].matchAttached) e++;
+				}
+				if (e.Equals(Drag.Length))
+				{
+					isSolved = true;
+					getChildWithTag("Win").GetComponent<Animator>().Play("win");
+					FindObjectOfType<PlayerManager>().GetComponent<AudioSource>().Play();
+				}
+				break;
+				
+
 				//            case "joao_2"://drag All
 //                Animator g = transform.FindChild("EnterPuzzle").GetComponent<Animator>();
 //                       g.SetInteger("tutorialType", 2);
