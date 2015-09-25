@@ -162,7 +162,7 @@ public class DPuzzle : Default {
 					getChildWithTag("Win").GetComponent<Animator>().Play("win");
 					FindObjectOfType<PlayerManager>().GetComponent<AudioSource>().Play();
 
-					Drag[0].match.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Sprites/mendigo_02");
+					Drag[0].match.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Sprites/men2");
 					Destroy(Drag[0].gameObject);
 				}
 				break;
@@ -202,6 +202,20 @@ public class DPuzzle : Default {
 				break;
 
 			case "fase2_5":
+				e = 0;
+				for (int i = 0; i < Drag.Length;i++ )
+				{
+					if (Drag[i].matchAttached) e++;
+				}
+				if (e.Equals(Drag.Length))
+				{
+					isSolved = true;
+					getChildWithTag("Win").GetComponent<Animator>().Play("win");
+					FindObjectOfType<PlayerManager>().GetComponent<AudioSource>().Play();
+				}
+				break;
+
+			case "fase2_6":
 				e = 0;
 				for (int i = 0; i < Drag.Length;i++ )
 				{
