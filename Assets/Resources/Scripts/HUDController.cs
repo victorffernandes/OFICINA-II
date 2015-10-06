@@ -8,6 +8,16 @@ public class HUDController : MonoBehaviour {
 		StartCoroutine( changeC (h) );
 	}
 
+	public void ScoreToPlayerPrefs()
+	{
+		foreach (string s in DPuzzle.points) {
+			PlayerPrefs.SetInt(s, PlayerPrefs.GetInt(s)+1);
+			Debug.Log(PlayerPrefs.GetInt(s));
+		}
+	}
+
+
+
 	public IEnumerator changeC(string g)
 	{
 		GameObject.FindGameObjectWithTag("fade").GetComponent<Animator>().Play("fadeOut");

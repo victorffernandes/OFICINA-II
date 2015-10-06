@@ -1,11 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class DPuzzle : Default {
     public bool isSolved = false;
     public bool canCall = false;
     public string puzzle;
     public DragDrop[] Drag;
+	public static List<string> points;
 
     void startPuzzle()
     {
@@ -15,6 +17,13 @@ public class DPuzzle : Default {
             a.Play();
         }
     }
+
+	void Start()
+	{
+		points = new List<string> ();
+		DPuzzle.points = new List<string> ();
+	}
+
     void outPuzzle() 
     {
         if (!isSolved)
@@ -55,6 +64,7 @@ public class DPuzzle : Default {
                     }
                     if (e.Equals(Drag.Length))
                     {
+						DPuzzle.points.Add("gold");
                         isSolved = true;
                         Destroy(transform.GetComponentInChildren<Animator>().gameObject);
                         FindObjectOfType<PlayerManager>().isWalking = true;
@@ -72,6 +82,7 @@ public class DPuzzle : Default {
                     }
                     if (e.Equals(Drag.Length))
                     {
+					DPuzzle.points.Add("gold");
                         isSolved = true;
 						Drag[0].match.gameObject.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Sprites/puzzle2");
                         FindObjectOfType<PlayerManager>().GetComponent<AudioSource>().Play();
@@ -87,6 +98,7 @@ public class DPuzzle : Default {
 				}
 				if (e.Equals(Drag.Length))
 				{
+					DPuzzle.points.Add("gold");
 					isSolved = true;
                     FindObjectOfType<PlayerManager>().GetComponent<AudioSource>().Play();
 					getChildWithTag("Win").GetComponent<Animator>().Play("win");
@@ -101,6 +113,7 @@ public class DPuzzle : Default {
 				}
 				if (e.Equals(Drag.Length))
 				{
+					DPuzzle.points.Add("silver");
 					isSolved = true;
                     FindObjectOfType<PlayerManager>().GetComponent<AudioSource>().Play();
 					getChildWithTag("Win").GetComponent<Animator>().Play("win");
@@ -114,6 +127,7 @@ public class DPuzzle : Default {
 				}
 				if (e.Equals(Drag.Length))
 				{
+					DPuzzle.points.Add("gold");
 					isSolved = true;
                     GetComponentInChildren<AudioSource>().Stop();
                     FindObjectOfType<PlayerManager>().GetComponent<AudioSource>().Play();
@@ -128,6 +142,7 @@ public class DPuzzle : Default {
 				}
 				if (e.Equals(Drag.Length))
 				{
+					DPuzzle.points.Add("gold");
 					isSolved = true;
                     FindObjectOfType<PlayerManager>().GetComponent<AudioSource>().Play();
 					getChildWithTag("Win").GetComponent<Animator>().Play("win");
@@ -142,6 +157,7 @@ public class DPuzzle : Default {
 				}
 				if (e.Equals(Drag.Length))
 				{
+					DPuzzle.points.Add("silver");
 					isSolved = true;
 					FindObjectOfType<PlayerManager>().GetComponent<AudioSource>().Play();
 					getChildWithTag("Win").GetComponent<Animator>().Play("win");
@@ -158,10 +174,11 @@ public class DPuzzle : Default {
 				}
 				if (e.Equals(Drag.Length))
 				{
+					DPuzzle.points.Add("silver");
 					isSolved = true;
 					getChildWithTag("Win").GetComponent<Animator>().Play("win");
 					FindObjectOfType<PlayerManager>().GetComponent<AudioSource>().Play();
-
+					points.Add("silver");
 					Drag[0].match.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Sprites/men2");
 					Destroy(Drag[0].gameObject);
 				}
@@ -176,6 +193,7 @@ public class DPuzzle : Default {
 				}
 				if (e.Equals(Drag.Length))
 				{
+					DPuzzle.points.Add("silver");
 					isSolved = true;
 					getChildWithTag("Win").GetComponent<Animator>().Play("win");
 					FindObjectOfType<PlayerManager>().GetComponent<AudioSource>().Play();
@@ -192,6 +210,7 @@ public class DPuzzle : Default {
 				}
 				if (e.Equals(Drag.Length))
 				{
+					DPuzzle.points.Add("bronze");
 					isSolved = true;
 					getChildWithTag("Win").GetComponent<Animator>().Play("win");
 					FindObjectOfType<PlayerManager>().GetComponent<AudioSource>().Play();
@@ -209,6 +228,7 @@ public class DPuzzle : Default {
 				}
 				if (e.Equals(Drag.Length))
 				{
+					DPuzzle.points.Add("bronze");
 					isSolved = true;
 					getChildWithTag("Win").GetComponent<Animator>().Play("win");
 					FindObjectOfType<PlayerManager>().GetComponent<AudioSource>().Play();
@@ -223,6 +243,7 @@ public class DPuzzle : Default {
 				}
 				if (e.Equals(Drag.Length))
 				{
+					DPuzzle.points.Add("bronze");
 					isSolved = true;
 					getChildWithTag("Win").GetComponent<Animator>().Play("win");
 					FindObjectOfType<PlayerManager>().GetComponent<AudioSource>().Play();
