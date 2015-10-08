@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -12,10 +13,9 @@ public class DPuzzle : Default {
     void startPuzzle()
     {
         canCall = true;
-        foreach(AudioSource a in GetComponentsInChildren<AudioSource>())
-        {
-            a.Play();
-        }
+		if (puzzle == "fase1_5") {
+			Drag [0].gameObject.GetComponent<AudioSource> ().Play ();
+		}
     }
 
 	void Start()
@@ -120,6 +120,7 @@ public class DPuzzle : Default {
 				}
 				break;
 			case "fase1_5":
+
 				e = 0;
 				for (int i = 0; i < Drag.Length;i++ )
 				{
@@ -129,7 +130,7 @@ public class DPuzzle : Default {
 				{
 					DPuzzle.points.Add("gold");
 					isSolved = true;
-                    GetComponentInChildren<AudioSource>().Stop();
+					GetComponentInChildren<AudioSource>().enabled = false;
                     FindObjectOfType<PlayerManager>().GetComponent<AudioSource>().Play();
 					getChildWithTag("Win").GetComponent<Animator>().Play("win");
 				}
@@ -214,7 +215,7 @@ public class DPuzzle : Default {
 					isSolved = true;
 					getChildWithTag("Win").GetComponent<Animator>().Play("win");
 					FindObjectOfType<PlayerManager>().GetComponent<AudioSource>().Play();
-					transform.GetComponentInChildren<AudioSource>().enabled = true;
+					transform.GetComponentInChildren<AudioSource>().enabled = HUDController.isOn;
 					transform.GetComponentInChildren<AudioSource>().Play();
 					Destroy(Drag[0].gameObject);
 				}
@@ -247,6 +248,8 @@ public class DPuzzle : Default {
 					isSolved = true;
 					getChildWithTag("Win").GetComponent<Animator>().Play("win");
 					FindObjectOfType<PlayerManager>().GetComponent<AudioSource>().Play();
+					GameObject.FindGameObjectWithTag("Hose").GetComponent<Animator>().Play("hoseWater");
+					GameObject.FindGameObjectWithTag("House").GetComponent<Animator>().Play("safeHouse");
 				}
 				break;
 				

@@ -4,7 +4,6 @@ using System.Collections;
 public class EgretController : MonoBehaviour {
 
 	public Transform target;
-	bool isEating = false;
 	public bool canFly = false;
 
 	void OnTriggerEnter2D(Collider2D col)
@@ -13,7 +12,6 @@ public class EgretController : MonoBehaviour {
 			transform.parent.GetComponent<DPuzzle>().Drag[0].wasTouched = false;
 			transform.parent.GetComponent<DPuzzle>().Drag[0].gameObject.transform.position = 
 				transform.parent.GetComponent<DPuzzle>().Drag[0].startPosition;
-			isEating = true;
 		}
 	}
 
@@ -21,7 +19,6 @@ public class EgretController : MonoBehaviour {
 	{
 		if (col.gameObject.tag == "DragEl") {
 			//transform.parent.GetComponent<DPuzzle>().Drag[0].gameObject.transform.position
-			isEating = false;
 		}
 	}
 	

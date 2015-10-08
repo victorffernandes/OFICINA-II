@@ -18,6 +18,7 @@ public class CarController : MonoBehaviour {
 
 	void Update () {
         transform.position += new Vector3(speed * Time.deltaTime, 0, 0);
+		try{
         if (Mathf.Abs((transform.position - FindObjectOfType<PlayerManager>().transform.position).x) > 15)
         {
             GetComponent<AudioSource>().volume -= 0.01f;
@@ -25,11 +26,13 @@ public class CarController : MonoBehaviour {
         else 
         {
             GetComponent<AudioSource>().volume = 0.2f;
-        }
+		}
+		}catch{}
         if(!isAlive)
         {
             startFading();
         }
+		GetComponent<AudioSource> ().enabled = HUDController.isOn;
 	}
     void OnTriggerEnter2D(Collider2D col)
     {

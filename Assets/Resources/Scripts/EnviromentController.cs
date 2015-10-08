@@ -5,13 +5,14 @@ public class EnviromentController : MonoBehaviour
 {
     public float spawnRate;
     public GameObject[] carTypes;
-    public GameObject cloud;
+    public GameObject[] cloudTypes;
 	public float minCloud;
 	public float maxCloud;
 
     IEnumerator spawnCloud()
     {
         yield return new WaitForSeconds(3f);
+		GameObject cloud = cloudTypes[Random.Range (0, cloudTypes.Length)];
         Instantiate(cloud,new Vector3(cloud.transform.position.x , Random.Range(minCloud,maxCloud),0),Quaternion.identity);
         StartCoroutine(spawnCloud());
     }

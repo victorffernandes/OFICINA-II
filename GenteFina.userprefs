@@ -1,0 +1,18 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Resources\Scripts\EgretController.cs">
+    <Files>
+      <File FileName="Assets\Resources\Scripts\SplahScreenAnimController.cs" Line="9" Column="4" />
+      <File FileName="Assets\Resources\Scripts\HUDController.cs" Line="48" Column="41" />
+      <File FileName="Assets\Resources\Scripts\DPuzzle.cs" Line="133" Column="60" />
+      <File FileName="Assets\Resources\Scripts\EnviromentController.cs" Line="15" Column="69" />
+      <File FileName="Assets\Resources\Scripts\CloudController.cs" Line="17" Column="73" />
+      <File FileName="Assets\Resources\Scripts\CarController.cs" Line="35" Column="60" />
+      <File FileName="Assets\Resources\Scripts\EgretController.cs" Line="42" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
